@@ -1,0 +1,129 @@
+{
+  "info": {
+    "name": "Support API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create Support",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"user\": \"507f1f77bcf86cd799439011\",\n  \"subject\": \"sample_subject\",\n  \"message\": \"sample_message\",\n  \"createdAt\": \"2025-09-16T20:00:10.116Z\",\n  \"updatedAt\": \"2025-09-16T20:00:10.117Z\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/api/v1/support",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "support"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get All Supports",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/v1/support",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "support"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get Support by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/v1/support/{{support_id}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "support",
+            "{{support_id}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Update Support",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"user\": \"507f1f77bcf86cd799439011\",\n  \"subject\": \"sample_subject\",\n  \"message\": \"sample_message\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/api/v1/support/{{support_id}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "support",
+            "{{support_id}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Delete Support",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/v1/support/{{support_id}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "support",
+            "{{support_id}}"
+          ]
+        }
+      }
+    }
+  ]
+}

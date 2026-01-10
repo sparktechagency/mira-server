@@ -1,0 +1,129 @@
+{
+  "info": {
+    "name": "Comment API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create Comment",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"message\": \"507f1f77bcf86cd799439011\",\n  \"user\": \"507f1f77bcf86cd799439011\",\n  \"content\": \"sample_content\",\n  \"isDeleted\": true,\n  \"createdAt\": \"2025-09-15T23:10:14.109Z\",\n  \"updatedAt\": \"2025-09-15T23:10:14.109Z\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/api/v1/comment",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "comment"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get All Comments",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/v1/comment",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "comment"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get Comment by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/v1/comment/{{comment_id}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "comment",
+            "{{comment_id}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Update Comment",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"message\": \"507f1f77bcf86cd799439011\",\n  \"user\": \"507f1f77bcf86cd799439011\",\n  \"content\": \"sample_content\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/api/v1/comment/{{comment_id}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "comment",
+            "{{comment_id}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Delete Comment",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/v1/comment/{{comment_id}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "comment",
+            "{{comment_id}}"
+          ]
+        }
+      }
+    }
+  ]
+}

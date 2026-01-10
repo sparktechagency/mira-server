@@ -1,0 +1,1582 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API Documentation",
+    "version": "1.0.0",
+    "description": "Generated API documentation"
+  },
+  "paths": {
+    "/message": {
+      "post": {
+        "tags": [
+          "Message"
+        ],
+        "summary": "Create a new Message",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MessageCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Message created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/Message"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Message"
+        ],
+        "summary": "Get all Messages",
+        "responses": {
+          "200": {
+            "description": "List of Messages retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Message"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/message/{id}": {
+      "get": {
+        "tags": [
+          "Message"
+        ],
+        "summary": "Get Message by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Message ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Message retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/Message"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Message not found"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Message"
+        ],
+        "summary": "Update Message",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Message ID"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/MessageUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Message updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/Message"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Message not found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Message"
+        ],
+        "summary": "Delete Message",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Message ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Message deleted successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/Message"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Message not found"
+          }
+        }
+      }
+    },
+    "/reaction": {
+      "post": {
+        "tags": [
+          "Reaction"
+        ],
+        "summary": "Create a new Reaction",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReactionCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Reaction created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/Reaction"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Reaction"
+        ],
+        "summary": "Get all Reactions",
+        "responses": {
+          "200": {
+            "description": "List of Reactions retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Reaction"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/reaction/{id}": {
+      "get": {
+        "tags": [
+          "Reaction"
+        ],
+        "summary": "Get Reaction by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Reaction ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Reaction retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/Reaction"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Reaction not found"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Reaction"
+        ],
+        "summary": "Update Reaction",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Reaction ID"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReactionUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Reaction updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/Reaction"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Reaction not found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Reaction"
+        ],
+        "summary": "Delete Reaction",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Reaction ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Reaction deleted successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/Reaction"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Reaction not found"
+          }
+        }
+      }
+    },
+    "/comment": {
+      "post": {
+        "tags": [
+          "Comment"
+        ],
+        "summary": "Create a new Comment",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CommentCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Comment created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/Comment"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Comment"
+        ],
+        "summary": "Get all Comments",
+        "responses": {
+          "200": {
+            "description": "List of Comments retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Comment"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/comment/{id}": {
+      "get": {
+        "tags": [
+          "Comment"
+        ],
+        "summary": "Get Comment by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Comment ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Comment retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/Comment"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Comment not found"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Comment"
+        ],
+        "summary": "Update Comment",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Comment ID"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CommentUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Comment updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/Comment"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Comment not found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Comment"
+        ],
+        "summary": "Delete Comment",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Comment ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Comment deleted successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/Comment"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Comment not found"
+          }
+        }
+      }
+    },
+    "/report": {
+      "post": {
+        "tags": [
+          "Report"
+        ],
+        "summary": "Create a new Report",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReportCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Report created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/Report"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Report"
+        ],
+        "summary": "Get all Reports",
+        "responses": {
+          "200": {
+            "description": "List of Reports retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Report"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/report/{id}": {
+      "get": {
+        "tags": [
+          "Report"
+        ],
+        "summary": "Get Report by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Report ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Report retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/Report"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Report not found"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Report"
+        ],
+        "summary": "Update Report",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Report ID"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReportUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Report updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/Report"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Report not found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Report"
+        ],
+        "summary": "Delete Report",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Report ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Report deleted successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/Report"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Report not found"
+          }
+        }
+      }
+    },
+    "/support": {
+      "post": {
+        "tags": [
+          "Support"
+        ],
+        "summary": "Create a new Support",
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SupportCreate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Support created successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/Support"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          "Support"
+        ],
+        "summary": "Get all Supports",
+        "responses": {
+          "200": {
+            "description": "List of Supports retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "type": "array",
+                      "items": {
+                        "$ref": "#/components/schemas/Support"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/support/{id}": {
+      "get": {
+        "tags": [
+          "Support"
+        ],
+        "summary": "Get Support by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Support ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Support retrieved successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/Support"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Support not found"
+          }
+        }
+      },
+      "patch": {
+        "tags": [
+          "Support"
+        ],
+        "summary": "Update Support",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Support ID"
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SupportUpdate"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "Support updated successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/Support"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Support not found"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Support"
+        ],
+        "summary": "Delete Support",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            },
+            "description": "Support ID"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Support deleted successfully",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "success": {
+                      "type": "boolean"
+                    },
+                    "message": {
+                      "type": "string"
+                    },
+                    "data": {
+                      "$ref": "#/components/schemas/Support"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Support not found"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "Message": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "description": "MongoDB ObjectId"
+          },
+          "sender": {
+            "type": "string",
+            "description": "sender reference ID"
+          },
+          "receiver": {
+            "type": "string",
+            "description": "receiver reference ID"
+          },
+          "deletedBy": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Array of deletedBy references"
+          },
+          "tocreatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "tocreatedAt field"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Last update timestamp"
+          },
+          "isShared": {
+            "type": "boolean",
+            "description": "isShared field"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Creation timestamp"
+          }
+        },
+        "required": [
+          "_id"
+        ]
+      },
+      "MessageCreate": {
+        "type": "object",
+        "properties": {
+          "sender": {
+            "type": "string",
+            "description": "sender reference ID"
+          },
+          "receiver": {
+            "type": "string",
+            "description": "receiver reference ID"
+          },
+          "deletedBy": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Array of deletedBy references"
+          },
+          "tocreatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "tocreatedAt field"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "updatedAt field"
+          },
+          "isShared": {
+            "type": "boolean",
+            "description": "isShared field"
+          }
+        },
+        "required": []
+      },
+      "MessageUpdate": {
+        "type": "object",
+        "properties": {
+          "sender": {
+            "type": "string",
+            "description": "sender reference ID"
+          },
+          "receiver": {
+            "type": "string",
+            "description": "receiver reference ID"
+          },
+          "deletedBy": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "description": "Array of deletedBy references"
+          },
+          "tocreatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "tocreatedAt field"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "updatedAt field"
+          },
+          "isShared": {
+            "type": "boolean",
+            "description": "isShared field"
+          }
+        }
+      },
+      "Reaction": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "description": "MongoDB ObjectId"
+          },
+          "message": {
+            "type": "string",
+            "description": "message reference ID"
+          },
+          "user": {
+            "type": "string",
+            "description": "user reference ID"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Creation timestamp"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Last update timestamp"
+          }
+        },
+        "required": [
+          "_id"
+        ]
+      },
+      "ReactionCreate": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "message reference ID"
+          },
+          "user": {
+            "type": "string",
+            "description": "user reference ID"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "createdAt field"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "updatedAt field"
+          }
+        },
+        "required": []
+      },
+      "ReactionUpdate": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "message reference ID"
+          },
+          "user": {
+            "type": "string",
+            "description": "user reference ID"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "createdAt field"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "updatedAt field"
+          }
+        }
+      },
+      "Comment": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "description": "MongoDB ObjectId"
+          },
+          "message": {
+            "type": "string",
+            "description": "message reference ID"
+          },
+          "user": {
+            "type": "string",
+            "description": "user reference ID"
+          },
+          "content": {
+            "type": "string",
+            "description": "content field"
+          },
+          "isDeleted": {
+            "type": "boolean",
+            "description": "isDeleted field"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Creation timestamp"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Last update timestamp"
+          }
+        },
+        "required": [
+          "_id"
+        ]
+      },
+      "CommentCreate": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "message reference ID"
+          },
+          "user": {
+            "type": "string",
+            "description": "user reference ID"
+          },
+          "content": {
+            "type": "string",
+            "description": "content field"
+          },
+          "isDeleted": {
+            "type": "boolean",
+            "description": "isDeleted field"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "createdAt field"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "updatedAt field"
+          }
+        },
+        "required": []
+      },
+      "CommentUpdate": {
+        "type": "object",
+        "properties": {
+          "message": {
+            "type": "string",
+            "description": "message reference ID"
+          },
+          "user": {
+            "type": "string",
+            "description": "user reference ID"
+          },
+          "content": {
+            "type": "string",
+            "description": "content field"
+          },
+          "isDeleted": {
+            "type": "boolean",
+            "description": "isDeleted field"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "createdAt field"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "updatedAt field"
+          }
+        }
+      },
+      "Report": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "description": "MongoDB ObjectId"
+          },
+          "reportedUser": {
+            "type": "string",
+            "description": "reportedUser reference ID"
+          },
+          "reportedMessage": {
+            "type": "string",
+            "description": "reportedMessage reference ID"
+          },
+          "reportedComment": {
+            "type": "string",
+            "description": "reportedComment reference ID"
+          },
+          "reportedReason": {
+            "type": "string",
+            "description": "reportedReason field"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Creation timestamp"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Last update timestamp"
+          }
+        },
+        "required": [
+          "_id"
+        ]
+      },
+      "ReportCreate": {
+        "type": "object",
+        "properties": {
+          "reportedUser": {
+            "type": "string",
+            "description": "reportedUser reference ID"
+          },
+          "reportedMessage": {
+            "type": "string",
+            "description": "reportedMessage reference ID"
+          },
+          "reportedComment": {
+            "type": "string",
+            "description": "reportedComment reference ID"
+          },
+          "reportedReason": {
+            "type": "string",
+            "description": "reportedReason field"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "createdAt field"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "updatedAt field"
+          }
+        },
+        "required": []
+      },
+      "ReportUpdate": {
+        "type": "object",
+        "properties": {
+          "reportedUser": {
+            "type": "string",
+            "description": "reportedUser reference ID"
+          },
+          "reportedMessage": {
+            "type": "string",
+            "description": "reportedMessage reference ID"
+          },
+          "reportedComment": {
+            "type": "string",
+            "description": "reportedComment reference ID"
+          },
+          "reportedReason": {
+            "type": "string",
+            "description": "reportedReason field"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "createdAt field"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "updatedAt field"
+          }
+        }
+      },
+      "Support": {
+        "type": "object",
+        "properties": {
+          "_id": {
+            "type": "string",
+            "description": "MongoDB ObjectId"
+          },
+          "user": {
+            "type": "string",
+            "description": "user reference ID"
+          },
+          "subject": {
+            "type": "string",
+            "description": "subject field"
+          },
+          "message": {
+            "type": "string",
+            "description": "message field"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Creation timestamp"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "Last update timestamp"
+          }
+        },
+        "required": [
+          "_id"
+        ]
+      },
+      "SupportCreate": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "type": "string",
+            "description": "user reference ID"
+          },
+          "subject": {
+            "type": "string",
+            "description": "subject field"
+          },
+          "message": {
+            "type": "string",
+            "description": "message field"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "createdAt field"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "updatedAt field"
+          }
+        },
+        "required": []
+      },
+      "SupportUpdate": {
+        "type": "object",
+        "properties": {
+          "user": {
+            "type": "string",
+            "description": "user reference ID"
+          },
+          "subject": {
+            "type": "string",
+            "description": "subject field"
+          },
+          "message": {
+            "type": "string",
+            "description": "message field"
+          },
+          "createdAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "createdAt field"
+          },
+          "updatedAt": {
+            "type": "string",
+            "format": "date-time",
+            "description": "updatedAt field"
+          }
+        }
+      }
+    }
+  }
+}

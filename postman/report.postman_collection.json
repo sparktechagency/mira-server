@@ -1,0 +1,129 @@
+{
+  "info": {
+    "name": "Report API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create Report",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"reportedUser\": \"507f1f77bcf86cd799439011\",\n  \"reportedMessage\": \"507f1f77bcf86cd799439011\",\n  \"reportedComment\": \"507f1f77bcf86cd799439011\",\n  \"reportedReason\": \"sample_reportedReason\",\n  \"createdAt\": \"2025-09-16T19:07:53.651Z\",\n  \"updatedAt\": \"2025-09-16T19:07:53.652Z\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/api/v1/report",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "report"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get All Reports",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/v1/report",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "report"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get Report by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/v1/report/{{report_id}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "report",
+            "{{report_id}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Update Report",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"reportedUser\": \"507f1f77bcf86cd799439011\",\n  \"reportedMessage\": \"507f1f77bcf86cd799439011\",\n  \"reportedComment\": \"507f1f77bcf86cd799439011\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/api/v1/report/{{report_id}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "report",
+            "{{report_id}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Delete Report",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/v1/report/{{report_id}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "report",
+            "{{report_id}}"
+          ]
+        }
+      }
+    }
+  ]
+}

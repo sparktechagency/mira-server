@@ -1,0 +1,129 @@
+{
+  "info": {
+    "name": "Message API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create Message",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"sender\": \"507f1f77bcf86cd799439011\",\n  \"receiver\": \"507f1f77bcf86cd799439011\",\n  \"deletedBy\": [\n    \"507f1f77bcf86cd799439011\"\n  ],\n  \"tocreatedAt\": \"2025-09-15T20:55:22.700Z\",\n  \"updatedAt\": \"2025-09-15T20:55:22.700Z\",\n  \"isShared\": true\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/api/v1/message",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "message"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get All Messages",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/v1/message",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "message"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get Message by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/v1/message/{{message_id}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "message",
+            "{{message_id}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Update Message",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"sender\": \"507f1f77bcf86cd799439011\",\n  \"receiver\": \"507f1f77bcf86cd799439011\",\n  \"deletedBy\": [\n    \"507f1f77bcf86cd799439011\"\n  ]\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/api/v1/message/{{message_id}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "message",
+            "{{message_id}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Delete Message",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/v1/message/{{message_id}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "message",
+            "{{message_id}}"
+          ]
+        }
+      }
+    }
+  ]
+}

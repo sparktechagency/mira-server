@@ -1,0 +1,129 @@
+{
+  "info": {
+    "name": "Reaction API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Create Reaction",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"message\": \"507f1f77bcf86cd799439011\",\n  \"user\": \"507f1f77bcf86cd799439011\",\n  \"createdAt\": \"2025-09-15T23:09:21.655Z\",\n  \"updatedAt\": \"2025-09-15T23:09:21.655Z\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/api/v1/reaction",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "reaction"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get All Reactions",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/v1/reaction",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "reaction"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get Reaction by ID",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/v1/reaction/{{reaction_id}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "reaction",
+            "{{reaction_id}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Update Reaction",
+      "request": {
+        "method": "PATCH",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"message\": \"507f1f77bcf86cd799439011\",\n  \"user\": \"507f1f77bcf86cd799439011\",\n  \"createdAt\": \"2025-09-15T23:09:21.655Z\"\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{base_url}}/api/v1/reaction/{{reaction_id}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "reaction",
+            "{{reaction_id}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Delete Reaction",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "url": {
+          "raw": "{{base_url}}/api/v1/reaction/{{reaction_id}}",
+          "host": [
+            "{{base_url}}"
+          ],
+          "path": [
+            "api",
+            "v1",
+            "reaction",
+            "{{reaction_id}}"
+          ]
+        }
+      }
+    }
+  ]
+}
