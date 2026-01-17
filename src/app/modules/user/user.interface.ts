@@ -31,6 +31,8 @@ export type IUser = {
   location: Point
   password: string
   role: string
+  dailyStreak: number
+  lastLoginDate?: Date
   appId?: string
   deviceToken?: string
 

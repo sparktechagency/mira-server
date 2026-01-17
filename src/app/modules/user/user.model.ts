@@ -38,6 +38,13 @@ const userSchema = new Schema<IUser, UserModel>(
     profile: {
       type: String,
     },
+    dailyStreak: {
+      type: Number,
+      default: 0,
+    },
+    lastLoginDate: {
+      type: Date,
+    },
     password: {
       type: String,
       required: true,
@@ -114,8 +121,7 @@ const userSchema = new Schema<IUser, UserModel>(
   {
     timestamps: true,
     toJSON: { virtuals: true },
-    toObject: { virtuals: true }
-
+    toObject: { virtuals: true },
   },
 )
 

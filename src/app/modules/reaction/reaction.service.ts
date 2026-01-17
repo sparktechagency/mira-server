@@ -72,8 +72,8 @@ const toggleReaction = async (
         profilePhoto:user.profile?.toString(),
       },
       to:message?.sender.toString(),
-      title:`${user.name} reacted to your message`,
-      body:`${user.name} reacted to your message`,
+      title:`reacted to your message`,
+      body:`reacted to your message`,
     }
       await sendNotification(notificationData.from, notificationData.to!, notificationData.title, notificationData.body);
     }

@@ -9,6 +9,8 @@ export interface ISupportFilterables {
 export interface ISupport {
   _id: Types.ObjectId;
   user: Types.ObjectId;
+  name: string;
+  email: string;
   subject: string;
   message: string;
   createdAt: Date;

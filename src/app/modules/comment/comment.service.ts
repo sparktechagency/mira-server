@@ -39,7 +39,7 @@ const createComment = async (user: JwtPayload, payload: Partial<IComment>) => {
         name: user.name,
         profile: user.profile?.toString(),
       },
-      title: `${user.name} commented on your message`,
+      title: `commented on your message`,
       body: createdComment[0].content,
     };
 
@@ -162,6 +162,10 @@ const getCommentByMessage = async(messageId:Types.ObjectId, pagination:IPaginati
       [sortBy]:sortOrder
     }).skip(skip).limit(limit).lean()
   ]);
+
+  
+
+
   return {
     meta:{
       page,
@@ -209,8 +213,8 @@ const reactForComment = async(commentId:Types.ObjectId, user:JwtPayload)=>{
         profile: user.profile?.toString(),
       },
       to: comment.user.toString(),
-      title: `${user.name} reacted on your comment.`,
-      body: `${user.name} reacted on your comment.`,
+      title: `reacted on your comment.`,
+      body: `reacted on your comment.`,
     };
     
     await sendNotification(notificationData.from, notificationData.to, notificationData.title, notificationData.body);

@@ -10,6 +10,7 @@ import { CommentRoutes } from '../app/modules/comment/comment.route'
 import { ReportRoutes } from '../app/modules/report/report.route'
 import { SupportRoutes } from '../app/modules/support/support.route'
 import { DashboardRoutes } from '../app/modules/dashboard/dashboard.route'
+import SettingsRouter from '../app/modules/settings/settings.route'
 
 
 const router = express.Router()
@@ -27,6 +28,7 @@ const apiRoutes: { path: string; route: Router }[] = [
   { path: '/reaction', route: ReactionRoutes },
   { path: '/comment', route: CommentRoutes },
   { path: '/report', route: ReportRoutes },
+  { path: '/settings', route: SettingsRouter },
   { path: '/support', route: SupportRoutes }]
 
 apiRoutes.forEach(route => {

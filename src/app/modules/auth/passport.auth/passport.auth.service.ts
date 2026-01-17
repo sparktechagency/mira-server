@@ -19,7 +19,7 @@ const handleGoogleLogin = async (payload: IUser & { profile: any }): Promise<IAu
   if (isUserExist) {
     //return only the token
     const tokens = AuthHelper.createToken(isUserExist._id, isUserExist.role)
-    return authResponse(StatusCodes.OK, `Welcome ${isUserExist.name} to our platform.`, isUserExist.role, tokens.accessToken, tokens.refreshToken)
+    return authResponse(StatusCodes.OK, `Welcome ${isUserExist.firstName} ${isUserExist.lastName} to our platform.`, isUserExist.role, tokens.accessToken, tokens.refreshToken)
   }
 
   const session = await User.startSession()
@@ -28,7 +28,8 @@ const handleGoogleLogin = async (payload: IUser & { profile: any }): Promise<IAu
   const userData = {
     email: emails[0].value,
     profile: photos[0].value,
-    name: displayName,
+    firstName: displayName.split(' ')[0],
+    lastName: displayName.split(' ')[1],
     verified: true,
     password: id,
     status: USER_STATUS.ACTIVE,
@@ -48,7 +49,7 @@ const handleGoogleLogin = async (payload: IUser & { profile: any }): Promise<IAu
     await session.commitTransaction()
     await session.endSession()
 
-    return authResponse(StatusCodes.OK, `Welcome ${user[0].name} to our platform.`, user[0].role, tokens.accessToken, tokens.refreshToken)
+    return authResponse(StatusCodes.OK, `Welcome ${user[0].firstName} ${user[0].lastName} to our platform.`, user[0].role, tokens.accessToken, tokens.refreshToken)
   } catch (error) {
     await session.abortTransaction(session)
     session.endSession()

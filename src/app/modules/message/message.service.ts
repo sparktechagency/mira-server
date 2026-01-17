@@ -11,6 +11,7 @@ import ApiError from '../../../errors/ApiError'
 import { StatusCodes } from 'http-status-codes'
 import { sendNotification } from '../../../helpers/notificationHelper'
 import { emitEvent } from '../../../helpers/socketInstances'
+import { Reaction } from '../reaction/reaction.model'
 
 const sendMessageToRandomUserOptimized = async (
   user: JwtPayload,
@@ -53,7 +54,7 @@ const sendMessageToRandomUserOptimized = async (
         profile: user.profile,
       },
       randomUser._id,
-      `${user.name} sent you a message`,
+      `sent you a message`,
       `${message.message}`,
     )
 
@@ -111,6 +112,19 @@ const getMyMessages = async (
     Message.countDocuments(messageCondition),
   ])
 
+  const messageWithReaction = await Promise.all(
+    messages.map(async message => {
+      const isLike = await Reaction.countDocuments({
+        message: message._id,
+        user: user.authId,
+      })
+      return {
+        ...message,
+        isLike: isLike ? true : false,
+      }
+    }),
+  )
+
   return {
     meta: {
       page,
@@ -118,7 +132,7 @@ const getMyMessages = async (
       total,
       totalPage: Math.ceil(total / limit),
     },
-    data: messages ?? [],
+    data: messageWithReaction ?? [],
   }
 }
 
@@ -187,6 +201,20 @@ const getFeedMessages = async (
       deletedBy: { $size: 0 },
     }),
   ])
+
+  const messageWithReaction = await Promise.all(
+    messages.map(async message => {
+      const isLike = await Reaction.countDocuments({
+        message: message._id,
+        user: user.authId,
+      })
+      return {
+        ...message,
+        isLike: isLike ? true : false,
+      }
+    }),
+  )
+
   return {
     meta: {
       page,
@@ -194,7 +222,7 @@ const getFeedMessages = async (
       total,
       totalPage: Math.ceil(total / limit),
     },
-    data: messages || [],
+    data: messageWithReaction || [],
   }
 }
 
@@ -215,15 +243,40 @@ const shareMessage = async (user: JwtPayload, messageId: string) => {
       'The message you are trying to share is already shared.',
     )
   }
-  if (message.receiver.toString() !== user.authId.toString()) {
-    throw new ApiError(
-      StatusCodes.FORBIDDEN,
-      'You are not authorized to share this message.',
-    )
-  }
+  // if (message.receiver.toString() !== user.authId.toString()) {
+  //   throw new ApiError(
+  //     StatusCodes.FORBIDDEN,
+  //     'You are not authorized to share this message.',
+  //   )
+  // }
   message.isShared = true
   await message.save()
   return `Message shared successfully.`
+}
+
+const deleteMessage = async (user: JwtPayload, messageId: string) => {
+  const message = await Message.findById(messageId)
+  if (!message) {
+    throw new ApiError(
+      StatusCodes.NOT_FOUND,
+      'The message you are trying to delete does not exist.',
+    )
+  }
+  // if (message.sender.toString() !== user.authId.toString() && message.receiver.toString() !== user.authId.toString()) {
+  //   throw new ApiError(
+  //     StatusCodes.FORBIDDEN,
+  //     'You are not authorized to delete this message.',
+  //   )
+  // }
+  if (message.deletedBy.includes(user.authId)) {
+    throw new ApiError(
+      StatusCodes.BAD_REQUEST,
+      'The message you are trying to delete has already been deleted.',
+    )
+  }
+  message.deletedBy.push(user.authId)
+  await message.save()
+  return `Message deleted successfully.`
 }
 
 export const MessageServices = {
@@ -232,4 +285,5 @@ export const MessageServices = {
   getMessageByUserId,
   getFeedMessages,
   shareMessage,
+  deleteMessage,
 }

@@ -30,7 +30,7 @@ router.post(
   '/',
   auth(
    
-    USER_ROLES.ADMIN
+    USER_ROLES.USER
   ),
   
   validateRequest(SupportValidations.create),

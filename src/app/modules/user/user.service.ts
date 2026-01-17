@@ -75,12 +75,51 @@ const getProfile = async (user: JwtPayload) => {
   if (!profile) {
     throw new ApiError(StatusCodes.BAD_REQUEST, 'Failed to get profile.')
   }
+
   if (profile.status === USER_STATUS.DELETED) {
     throw new ApiError(StatusCodes.BAD_REQUEST, 'Failed to get profile.')
   }
+
+  const now = new Date()
+  const todayStr = now.toISOString().split('T')[0]
+
+  const lastLoginStr = profile.lastLoginDate
+    ? profile.lastLoginDate.toISOString().split('T')[0]
+    : null
+
+  let newStreak = profile.dailyStreak
+
+  if (lastLoginStr !== todayStr) {
+    if (profile.lastLoginDate) {
+      const yesterday = new Date()
+      yesterday.setDate(yesterday.getDate() - 1)
+      const yesterdayStr = yesterday.toISOString().split('T')[0]
+
+      if (lastLoginStr === yesterdayStr) {
+        newStreak = profile.dailyStreak + 1
+      } else {
+        newStreak = 1
+      }
+    } else {
+      newStreak = 1
+    }
+
+    await User.updateOne(
+      { _id: profile._id },
+      {
+        $set: {
+          dailyStreak: newStreak,
+          lastLoginDate: now,
+        },
+      },
+    )
+
+    profile.dailyStreak = newStreak
+    profile.lastLoginDate = now
+  }
+
   return profile
 }
-
 const getAllUsers = async (
   user: JwtPayload,
   pagination: IPaginationOptions,
