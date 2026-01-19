@@ -20,7 +20,7 @@ const customLogin = catchAsync(async (req: Request, res: Response) => {
 const googleLogin = catchAsync(async (req: Request, res: Response) => {
   const { ...loginData } = req.body
 
-  const result = await CustomAuthServices.googleLogin(loginData)
+  const result = await CustomAuthServices.googleLoginService(loginData)
   const {status, message, accessToken, refreshToken, role} = result
 
   sendResponse(res, {
@@ -177,4 +177,5 @@ export const CustomAuthController = {
   adminLogin,
   socialLogin,
   toggleUserStatus,
+  googleLogin
 }

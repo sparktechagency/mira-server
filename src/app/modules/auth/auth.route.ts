@@ -27,7 +27,7 @@ router.post(
 
 router.post(
   '/google-login',
-  CustomAuthController.customLogin,
+  CustomAuthController.googleLogin,
 )
 
 router.get(

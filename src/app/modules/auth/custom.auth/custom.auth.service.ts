@@ -16,6 +16,7 @@ import { JwtPayload } from 'jsonwebtoken'
 import { IUser } from '../../user/user.interface'
 import { emailHelper } from '../../../../helpers/emailHelper'
 import { Types } from 'mongoose'
+import { firebaseAdmin } from '../../../../config/firebase-config'
 
 const createUser = async (payload: IUser) => {
   payload.email = payload.email?.toLowerCase().trim()
@@ -93,9 +94,10 @@ const customLogin = async (payload: ILoginData): Promise<IAuthResponse> => {
 }
 
 const googleLoginService = async (payload: {
-  token: string
+  token: string,
+  deviceToken?: string,
 }): Promise<IAuthResponse> => {
-  const { token } = payload
+  const { token, deviceToken } = payload
 
   if (!token) {
     throw new ApiError(StatusCodes.BAD_REQUEST, 'Firebase ID token is required')
@@ -137,7 +139,7 @@ const googleLoginService = async (payload: {
   if (user) {
     // Check user status
     if (
-      user.status === USER_STATUS.BLOCKED ||
+      user.status === USER_STATUS.RESTRICTED ||
       user.status === USER_STATUS.DELETED
     ) {
       throw new ApiError(
@@ -146,7 +148,7 @@ const googleLoginService = async (payload: {
       )
     }
 
-    if (user.status === USER_STATUS.INACTIVE) {
+    if (user.status !== USER_STATUS.ACTIVE) {
       throw new ApiError(
         StatusCodes.FORBIDDEN,
         'Your account is inactive. Please contact support.',
@@ -184,6 +186,7 @@ const googleLoginService = async (payload: {
       profile: picture,
       verified: email_verified,
       status: USER_STATUS.ACTIVE,
+      deviceToken,
       authentication: {
         authType: 'google',
       },
@@ -809,4 +812,5 @@ export const CustomAuthServices = {
   changePassword,
   createUser,
   toggleUserStatus,
+  googleLoginService,
 }

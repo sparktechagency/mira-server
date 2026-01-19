@@ -1,15 +1,13 @@
 // src/config/firebase.config.ts
 import admin from 'firebase-admin'
-import dotenv from 'dotenv'
-
-dotenv.config()
+import config from '.'
 
 if (!admin.apps.length) {
   admin.initializeApp({
     credential: admin.credential.cert({
-      projectId: process.env.FIREBASE_PROJECT_ID,
-      privateKey: process.env.FIREBASE_PRIVATE_KEY?.replace(/\\n/g, '\n'),
-      clientEmail: process.env.FIREBASE_CLIENT_EMAIL,
+      projectId: config.firebase.projectId,
+      privateKey: config.firebase.privateKey,
+      clientEmail: config.firebase.clientEmail,
     }),
   })
 }
