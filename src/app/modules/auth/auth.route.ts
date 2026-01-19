@@ -25,6 +25,11 @@ router.post(
   CustomAuthController.customLogin,
 )
 
+router.post(
+  '/google-login',
+  CustomAuthController.customLogin,
+)
+
 router.get(
   '/google',
   passport.authenticate('google', { scope: ['profile', 'email'] }),
