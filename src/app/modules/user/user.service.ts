@@ -130,6 +130,7 @@ const getAllUsers = async (
     paginationHelper.calculatePagination(pagination)
   const andConditions = []
 
+  // Search condition if searchTerm is provided
   if (searchTerm) {
     andConditions.push({
       $or: userSearchableFields.map(field => ({
@@ -141,6 +142,7 @@ const getAllUsers = async (
     })
   }
 
+  // Adding additional filters if any
   if (Object.keys(filterData).length) {
     andConditions.push({
       $and: Object.entries(filterData).map(([field, value]) => ({
@@ -149,16 +151,19 @@ const getAllUsers = async (
     })
   }
 
+  andConditions.push({
+    role: { $ne: USER_ROLES.ADMIN },
+  })
+
+  // Combine conditions
   const whereConditions =
     andConditions.length > 0
       ? {
           $and: andConditions,
         }
       : {}
-      
-  andConditions.push({
-    role: USER_ROLES.USER,
-  })
+
+  // Fetch total count and result simultaneously
   const [total, result] = await Promise.all([
     User.countDocuments(whereConditions),
     User.find(whereConditions)
@@ -167,6 +172,7 @@ const getAllUsers = async (
       .sort({ [sortBy]: sortOrder })
       .lean(),
   ])
+
   return {
     meta: {
       page,
