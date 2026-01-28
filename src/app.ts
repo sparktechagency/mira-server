@@ -16,7 +16,13 @@ app.use(Morgan.errorHandler)
 //body parser
 app.use(
   cors({
-    origin: ['http://10.10.7.102:5300', 'http://localhost:3001'],
+    origin: [
+      'http://10.10.7.102:5300',
+      'http://localhost:3001',
+      'http://10.10.7.46:5300',
+      'https://dashboard.shxshofficial.com',
+      'https://www.dashboard.shxshofficial.com',
+    ],
     credentials: true,
   }),
 )
@@ -61,10 +67,8 @@ app.get('/', (req: Request, res: Response) => {
   `)
 })
 
-
 //global error handle
 app.use(globalErrorHandler)
-
 
 app.use((req, res) => {
   res.status(StatusCodes.NOT_FOUND).json({
@@ -73,17 +77,17 @@ app.use((req, res) => {
     errorMessages: [
       {
         path: req.originalUrl,
-        message: "Congratulations, you've reached a completely useless API endpoint 👏",
+        message:
+          "Congratulations, you've reached a completely useless API endpoint 👏",
       },
       {
         path: '/docs',
-        message: "Hint: Maybe try reading the docs next time? 📚",
+        message: 'Hint: Maybe try reading the docs next time? 📚',
       },
     ],
-    roast: "404 brain cells not found. Try harder. 🧠❌",
+    roast: '404 brain cells not found. Try harder. 🧠❌',
     timestamp: new Date().toISOString(),
-  });
-});
-
+  })
+})
 
 export default app
