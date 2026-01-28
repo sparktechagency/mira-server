@@ -155,7 +155,10 @@ const getAllUsers = async (
           $and: andConditions,
         }
       : {}
-
+      
+  andConditions.push({
+    role: USER_ROLES.USER,
+  })
   const [total, result] = await Promise.all([
     User.countDocuments(whereConditions),
     User.find(whereConditions)
